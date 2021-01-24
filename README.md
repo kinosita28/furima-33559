@@ -1,24 +1,76 @@
-# README
+#furima テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column     | Type    | Options                   |
+| ---------- | ------- | ------------------------- |
+| nickname   | string  | null: false               |
+| email      | string  | null: false, unique: true |
+| password   | string  | null: false, unique: true |
+| first_name | string  | null: false, unique: true |
+| last_name  | string  | null: false, unique: true |
+| k_first    | string  | null: false, unique: true |
+| k_last     | string  | null: false, unique: true |
+| birthday   | integer | null: false               |
 
-* Ruby version
 
-* System dependencies
+### Association
 
-* Configuration
+- has_many :items
+- has_one :orders
+- has_many :domiciles
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column       | Type          | Options             |
+| ------------ | ------------- | ------------------- |
+| image        | ActiveStorage |                     |
+| product_name | text          | null: false         |
+| expalanation | enum          | null: false         |
+| category     | enum          | null: false         |
+| state        | enum          | null: false         |
+| delivery_fee | enum          | null: false         |
+| area         | enum          | null: false         |
+| days         | enum          | null: false         |
+| selling_price| string        | null: false         |
+| users        | references    | foreign_key: true   |
+| orders       | references    | foreign_key: true   |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :users
+- has_one :orders
 
-* Deployment instructions
+## orders テーブル
 
-* ...
+| Column     | Type       | Options           |
+| ---------- | ---------- | ----------------- |
+| id         | integer    | null: false       |
+| card_number| integer    | null: false       |
+| items      | references | foreign_key: true |
+| users      | references | foreign_key: true |
+
+### Association
+
+- has_one :users
+- has_one :items
+
+## domiciles
+
+| Column       | Type       | Options           |
+| ------------ | ---------- | ----------------- |
+| postal_code  | integer    | null: false       |    
+| prefectures  | string     | null: false       |
+| manicipality | string     | null: false       |
+| address      | integer    | null: false       |
+| buliding     | string     |                   |
+| phone_number | integer    | null: false       |
+| users        | references | foreign_key: true |
+| items        | references | foreign_key: true |
+| orders       | references | foreign_key: true |
+
+### Association
+
+- belongs_to :users
+- has_one :items
+- has_one :orders
