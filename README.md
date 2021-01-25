@@ -6,7 +6,7 @@
 | ------------------- | ------- | ------------------------- |
 | nickname            | string  | null: false               |
 | email               | string  | null: false, unique: true |
-| encrypted_password  | string  | null: false,              |
+| encrypted_password  | string  | null: false               |
 | first_name          | string  | null: false               |
 | last_name           | string  | null: false               |
 | k_first             | string  | null: false               |
@@ -16,22 +16,22 @@
 
 ### Association
 
-- has_many :item
-- has_many :order
+- has_many :items
+- has_many :orders
 
 ## items テーブル
 
-| Column       | Type          | Options             |
-| ------------ | ------------- | ------------------- |
-| product_name | string        | null: false         |
-| expalanation | text          | null: false         |
-| category_id  | integer       | null: false         |
-| state_id     | integer       | null: false         |
-| fee_id       | integer       | null: false         |
-| area_id      | integer       | null: false         |
-| day_id       | integer       | null: false         |
-| selling_price| integer       | null: false         |
-| user         | references    | foreign_key: true   |
+| Column         | Type          | Options             |
+| ---------------| ------------- | ------------------- |
+| product_name   | string        | null: false         |
+| expalanation   | text          | null: false         |
+| category_id    | integer       | null: false         |
+| state_id       | integer       | null: false         |
+| fee_id         | integer       | null: false         |
+| prefectures_id | integer       | null: false         |
+| day_id         | integer       | null: false         |
+| selling_price  | integer       | null: false         |
+| user           | references    | foreign_key: true   |
 
 ### Association
 
@@ -56,7 +56,7 @@
 | Column       | Type       | Options           |
 | ------------ | ---------- | ----------------- |
 | postal_code  | string     | null: false       |    
-| area         | integer    | null: false       |
+| prefectures  | integer    | null: false       |
 | manicipality | string     | null: false       |
 | address      | string     | null: false       |
 | buliding     | string     |                   |
@@ -65,4 +65,4 @@
 
 ### Association
 
-- belongs_to :orders
+- belongs_to :order
