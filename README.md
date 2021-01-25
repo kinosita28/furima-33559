@@ -44,7 +44,6 @@
 | ---------- | ---------- | ----------------- |
 | item       | references | foreign_key: true |
 | user       | references | foreign_key: true |
-| domicile   | references | foreign_key: true |
 
 ### Association
 
@@ -57,9 +56,9 @@
 | Column       | Type       | Options           |
 | ------------ | ---------- | ----------------- |
 | postal_code  | string     | null: false       |    
-| prefectures  | integer    | null: false       |
+| area         | integer    | null: false       |
 | manicipality | string     | null: false       |
-| address      | integer    | null: false       |
+| address      | string     | null: false       |
 | buliding     | string     |                   |
 | phone_number | string     | null: false       |
 | order        | references | foreign_key: true |
