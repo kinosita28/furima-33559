@@ -2,36 +2,34 @@
 
 ## users テーブル
 
-| Column     | Type    | Options                   |
-| ---------- | ------- | ------------------------- |
-| nickname   | string  | null: false               |
-| email      | string  | null: false, unique: true |
-| password   | string  | null: false, unique: true |
-| first_name | string  | null: false, unique: true |
-| last_name  | string  | null: false, unique: true |
-| k_first    | string  | null: false, unique: true |
-| k_last     | string  | null: false, unique: true |
-| birthday   | integer | null: false               |
+| Column              | Type    | Options                   |
+| ------------------- | ------- | ------------------------- |
+| nickname            | string  | null: false               |
+| email               | string  | null: false, unique: true |
+| encrypted_password  | string  | null: false,              |
+| first_name          | string  | null: false               |
+| last_name           | string  | null: false               |
+| k_first             | string  | null: false               |
+| k_last              | string  | null: false               |
+| birthday            | date    | null: false               |
 
 
 ### Association
 
 - has_many :items
-- has_one :orders
-- has_many :domiciles
+- has_many :orders
 
 ## items テーブル
 
 | Column       | Type          | Options             |
 | ------------ | ------------- | ------------------- |
-| image        | ActiveStorage |                     |
-| product_name | text          | null: false         |
-| expalanation | enum          | null: false         |
-| category     | enum          | null: false         |
-| state        | enum          | null: false         |
-| delivery_fee | enum          | null: false         |
-| area         | enum          | null: false         |
-| days         | enum          | null: false         |
+| product_name | string        | null: false         |
+| expalanation | text          | null: false         |
+| category_id  | integer       | null: false         |
+| state_id     | integer       | null: false         |
+| fee_id       | integer       | null: false         |
+| area_id      | integer       | null: false         |
+| day_id       | integer       | null: false         |
 | selling_price| string        | null: false         |
 | users        | references    | foreign_key: true   |
 | orders       | references    | foreign_key: true   |
@@ -45,32 +43,26 @@
 
 | Column     | Type       | Options           |
 | ---------- | ---------- | ----------------- |
-| id         | integer    | null: false       |
-| card_number| integer    | null: false       |
 | items      | references | foreign_key: true |
 | users      | references | foreign_key: true |
 
 ### Association
 
-- has_one :users
-- has_one :items
+- belongs_to :users
+- belongs_to :items
 
 ## domiciles
 
 | Column       | Type       | Options           |
 | ------------ | ---------- | ----------------- |
-| postal_code  | integer    | null: false       |    
+| postal_code  | string     | null: false       |    
 | prefectures  | string     | null: false       |
 | manicipality | string     | null: false       |
 | address      | integer    | null: false       |
 | buliding     | string     |                   |
 | phone_number | integer    | null: false       |
-| users        | references | foreign_key: true |
-| items        | references | foreign_key: true |
 | orders       | references | foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- has_one :items
-- has_one :orders
+- belongs_to :orders
