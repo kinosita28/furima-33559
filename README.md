@@ -24,7 +24,7 @@
 | Column         | Type          | Options             |
 | ---------------| ------------- | ------------------- |
 | product_name   | string        | null: false         |
-| expalanation   | text          | null: false         |
+| explanation    | text          | null: false         |
 | category_id    | integer       | null: false         |
 | state_id       | integer       | null: false         |
 | fee_id         | integer       | null: false         |
@@ -53,15 +53,15 @@
 
 ## domiciles
 
-| Column       | Type       | Options           |
-| ------------ | ---------- | ----------------- |
-| postal_code  | string     | null: false       |    
-| prefectures  | integer    | null: false       |
-| manicipality | string     | null: false       |
-| address      | string     | null: false       |
-| buliding     | string     |                   |
-| phone_number | string     | null: false       |
-| order        | references | foreign_key: true |
+| Column         | Type       | Options           |
+| -------------- | ---------- | ----------------- |
+| postal_code    | string     | null: false       |    
+| prefectures_id | integer    | null: false       |
+| municipality   | string     | null: false       |
+| address        | string     | null: false       |
+| building       | string     |                   |
+| phone_number   | string     | null: false       |
+| order          | references | foreign_key: true |
 
 ### Association
 
