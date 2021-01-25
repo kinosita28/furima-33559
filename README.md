@@ -16,8 +16,8 @@
 
 ### Association
 
-- has_many :items
-- has_many :orders
+- has_many :item
+- has_many :order
 
 ## items テーブル
 
@@ -30,38 +30,39 @@
 | fee_id       | integer       | null: false         |
 | area_id      | integer       | null: false         |
 | day_id       | integer       | null: false         |
-| selling_price| string        | null: false         |
-| users        | references    | foreign_key: true   |
-| orders       | references    | foreign_key: true   |
+| selling_price| integer       | null: false         |
+| user         | references    | foreign_key: true   |
 
 ### Association
 
-- belongs_to :users
-- has_one :orders
+- belongs_to :user
+- has_one :order
 
 ## orders テーブル
 
 | Column     | Type       | Options           |
 | ---------- | ---------- | ----------------- |
-| items      | references | foreign_key: true |
-| users      | references | foreign_key: true |
+| item       | references | foreign_key: true |
+| user       | references | foreign_key: true |
+| domicile   | references | foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
+- has_one :domicile
 
 ## domiciles
 
 | Column       | Type       | Options           |
 | ------------ | ---------- | ----------------- |
 | postal_code  | string     | null: false       |    
-| prefectures  | string     | null: false       |
+| prefectures  | integer    | null: false       |
 | manicipality | string     | null: false       |
 | address      | integer    | null: false       |
 | buliding     | string     |                   |
-| phone_number | integer    | null: false       |
-| orders       | references | foreign_key: true |
+| phone_number | string     | null: false       |
+| order        | references | foreign_key: true |
 
 ### Association
 
