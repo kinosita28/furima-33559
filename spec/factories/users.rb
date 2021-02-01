@@ -8,6 +8,6 @@ FactoryBot.define do
     last_name {"全角"}
     k_first {"テスト"}
     k_last {"テスト"}
-    birthday {8.16}
+    birthday {1992_08_16}
   end
 end
