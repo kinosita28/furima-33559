@@ -146,7 +146,7 @@
                   <%= item.product_name %>
                 </h3>
                 <div class='item-price'>
-                  <span><%= item.selling_price %>円<br><%= Fee.find(item.fee_id).name %></span>
+                  <span><%= item.selling_price %>円<br><%= item.fee.name %></span>
                   <div class='star-btn'>
                     <%= image_tag "star.png", class:"star-icon" %>
                     <span class='star-count'>0</span>
@@ -181,7 +181,6 @@
     <% end %>  
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-    <%# end %>  
     </ul>
   </div>
   <%# /商品一覧 %>
