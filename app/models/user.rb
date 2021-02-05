@@ -16,15 +16,15 @@ class User < ApplicationRecord
     validates :birthday
   end
 
-  with_options format: {with: /\A[一-龥々]+\z/ } do
+  with_options format: { with: /\A[一-龥々]+\z/ } do
     validates :first_name
     validates :last_name
   end
 
-  with_options format: {with: /\A[ァ-ヶ]+\z/ } do
+  with_options format: { with: /\A[ァ-ヶ]+\z/ } do
     validates :k_first
     validates :k_last
-  end  
+  end
 
   has_many :items
   has_many :orders
