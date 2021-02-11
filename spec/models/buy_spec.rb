@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Buy, type: :model do
   before do
-    @item = FactoryBot.build(:item)
-    @user = FactoryBot.build(:user)
-    @buy = FactoryBot.build(:buy)
+    @item = FactoryBot.create(:item)
+    @user = FactoryBot.create(:user)
+    @buy = FactoryBot.build(:buy, item_id: @item, user_id: @user)
+    sleep(1)
   end 
 
   describe '商品購入' do
@@ -59,6 +60,16 @@ RSpec.describe Buy, type: :model do
         @buy.valid?
         expect(@buy.errors.full_messages).to include("Phone number is invalid")
       end  
+      it "電話番号が数字のみでないと登録出来ないこと" do
+        @buy.phone_number = "111aaa"
+        @buy.valid?
+        expect(@buy.errors.full_messages).to include("Phone number is invalid")
+      end
+      it "全角数字だと登録出来ないこと" do
+        @buy.phone_number = "１１１"
+        @buy.valid?
+        expect(@buy.errors.full_messages).to include("Phone number is invalid")
+      end    
       it "tokenが空だと登録出来ない" do
         @buy.token = ""
         @buy.valid?

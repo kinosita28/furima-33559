@@ -1,13 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index,:create]
   before_action :set_item, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
 
   def index
-    if @item.user_id == current_user.id || @item.order.present?
-      redirect_to root_path
-    else
-      @order = Buy.new
-    end
   end  
 
   def create
@@ -39,4 +35,13 @@ class OrdersController < ApplicationController
         currency: 'jpy'                 # 通貨の種類（日本円）
       )
   end  
+
+  def move_to_index
+    if @item.user_id == current_user.id || @item.order.present?
+      redirect_to root_path
+    else
+      @order = Buy.new
+    end  
+  end  
+
 end
