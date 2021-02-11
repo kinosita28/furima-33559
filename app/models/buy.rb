@@ -7,7 +7,7 @@ class Buy
     validates :item_id
     validates :postal_code, format: {with:/\A\d{3}[-]\d{4}\z/}
     validates :prefecture_id, numericality: { other_than: 1}
-    validates :municipality, format: {with:/\A[一-龥ぁ-ん]/}
+    validates :municipality
     validates :address
     validates :phone_number, format: {with:/\A\d{7,11}\z/}
     validates :token

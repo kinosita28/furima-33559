@@ -38,12 +38,7 @@ RSpec.describe Buy, type: :model do
       it "市区町村が空では購入出来ない" do
         @buy.municipality = ""
         @buy.valid?
-        expect(@buy.errors.full_messages).to include("Municipality can't be blank", "Municipality is invalid")
-      end  
-      it "市区町村が全角でないと購入出来ない" do
-        @buy.municipality = "aaa"
-        @buy.valid?
-        expect(@buy.errors.full_messages).to include("Municipality is invalid")
+        expect(@buy.errors.full_messages).to include("Municipality can't be blank")
       end  
       it "番地が空だと購入出来ない" do
         @buy.address = ""
@@ -83,9 +78,6 @@ RSpec.describe Buy, type: :model do
       end
       it "建物名が空でも購入出来る" do
         @buy.building = ""
-        expect(@buy).to be_valid
-      end   
-      it "販売価格とtokenがあれば保存出来る" do
         expect(@buy).to be_valid
       end   
     end  
