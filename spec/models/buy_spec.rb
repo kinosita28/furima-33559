@@ -4,7 +4,7 @@ RSpec.describe Buy, type: :model do
   before do
     @item = FactoryBot.create(:item)
     @user = FactoryBot.create(:user)
-    @buy = FactoryBot.build(:buy, item_id: @item, user_id: @user)
+    @buy = FactoryBot.build(:buy, item_id: @item_id, user_id: @user_id)
     sleep(1)
   end 
 

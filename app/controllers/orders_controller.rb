@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_action :move_to_index, only: [:index, :create]
 
   def index
+    @order = Buy.new
   end  
 
   def create
@@ -39,8 +40,6 @@ class OrdersController < ApplicationController
   def move_to_index
     if @item.user_id == current_user.id || @item.order.present?
       redirect_to root_path
-    else
-      @order = Buy.new
     end  
   end  
 
