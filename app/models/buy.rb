@@ -9,7 +9,7 @@ class Buy
     validates :prefecture_id, numericality: { other_than: 1}
     validates :municipality, format: {with:/\A[一-龥ぁ-ん]/}
     validates :address
-    validates :phone_number, format: {with:/\A\d{11}\z/}
+    validates :phone_number, format: {with:/\A\d{7,11}\z/}
     validates :token
   end
 

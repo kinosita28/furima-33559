@@ -4,7 +4,7 @@ RSpec.describe Buy, type: :model do
   before do
     @item = FactoryBot.create(:item)
     @user = FactoryBot.create(:user)
-    @buy = FactoryBot.build(:buy, item_id: @item_id, user_id: @user_id)
+    @buy = FactoryBot.build(:buy, item_id: @item.id, user_id: @user.id)
     sleep(1)
   end 
 
@@ -53,7 +53,7 @@ RSpec.describe Buy, type: :model do
       it "電話番号が空では購入出来ない" do
         @buy.phone_number = ""
         @buy.valid?
-        expect(@buy.errors.full_messages).to include("Phone number can't be blank", "Phone number is invalid")
+        expect(@buy.errors.full_messages).to include("Phone number can't be blank")
       end 
       it "電話番号が12ケタ以上では購入出来ない" do
         @buy.phone_number = "111111111111"
