@@ -18,10 +18,15 @@ ja:
         fee_id: 配送料の負担
         prefecture_id: 発送元の地域
         day_id: 発送までの日数
-  domiciles:
-    postal_code: 郵便番号
-    prefecture_id: 都道府県
-    municipality: 市区町村
-    address: 番地
-    phone_number: 電話番号
-    token: クレジットカード情報
+        
+  activemodel:
+    attributes:
+      buy:
+        user_id: ユーザー
+        item_id: アイテム
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        municipality: 市区町村
+        address: 番地
+        phone_number: 電話番号
+        token: クレジットカード情報
