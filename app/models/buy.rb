@@ -5,11 +5,11 @@ class Buy
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :postal_code, format: {with:/\A\d{3}[-]\d{4}\z/}
-    validates :prefecture_id, numericality: { other_than: 1}
-    validates :municipality
+    validates :postal_code, format: {with:/\A\d{3}[-]\d{4}\z/,allow_blank: true}
+    validates :prefecture_id, numericality: { other_than: 1, message: "を選んでください"}
+    validates :municipality, format: {with:/\A[一-龥ぁ-ん]/,allow_blank: true}
     validates :address
-    validates :phone_number, format: {with:/\A\d{7,11}\z/}
+    validates :phone_number, format: {with:/\A\d{7,11}\z/,allow_blank: true}
     validates :token
   end
 
