@@ -24,3 +24,29 @@
   height: 49px;
   margin: 0 auto;
 }
+
+.f_btn {
+  background-color:navy;
+  height: 50px;
+  width: 200px;
+  color: #f5f5f5;
+  border: 1px solid white;
+  margin: 0 auto;
+  text-align: center;
+  font-size: large;
+  display: block;
+  padding: 10px;
+}
+
+.g_btn {
+  background-color: red;
+  height: 50px;
+  width: 200px;
+  color: #f5f5f5;
+  border: 1px solid white;
+  margin: 0 auto;
+  text-align: center;
+  font-size: large;
+  display: block;
+  padding: 10px;
+}
